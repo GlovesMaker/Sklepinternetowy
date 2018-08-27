@@ -1,0 +1,92 @@
+{% extends "apka/base.html" %}
+{% load bootstrap3 %}
+{% block title %}
+    Kasa
+{% endblock %}
+
+{% block content %}
+<style>
+form
+{
+	float: left;
+	width: 400px;
+	
+	
+	font-size: 12px
+	padding: 25px;
+}
+
+#form1
+{
+	float: left;
+	width: 400px;
+	margin-bottom: 20px;
+	font-size: 12px
+	padding: 25px;
+	margin-left: 30px;
+}
+
+input[type=text],
+input[type=email]
+{
+width: 180px;
+border: 1px solid black;
+margin-right: 20px;
+margin-top: 1px;
+
+}
+input[type=submit]
+{
+margin-top: 10px;
+margin-bottom: 20px;
+
+
+}
+input[type=submit]:hover
+{
+background-color: ;
+}
+</style>
+<div class="container">
+<br>
+    <h4><b>Kasa</b></h4><br>
+
+		<form class="row"  action="." method="post">
+		
+	
+			{% bootstrap_form form %}
+			{% csrf_token %}  
+			
+			<p> Pola oznaczone symbolem * nie są obowiązkowe. <a href="https://twoj.inpost.pl/boxmachines/BoxMachinesList.pdf">Lista Paczkomatów InPost.</a></p>
+			
+			<input type="submit" class="btn btn-outline-dark" value="Złóż zamówienie">
+			
+		</form>
+		
+	</div>
+</div>
+
+
+	<div id="form1" style="border: 1px solid black;">			
+		
+		<center><b><big><div style="letter-spacing: 3px;">Twoje zamowienie:</div> </big></b></center><br>
+
+			
+        
+	
+			{% for item in cart %}
+			<ul><b>{{ item.quantity }}</b> x {{ item.product.name }} <span style="color: black;" > <br><b> {{ item.total_price }} PLN</b></span>
+			</ul> {% endfor %}<br> 
+			
+			{% if cart.coupon %}
+			<ul>	 Wykorzystany kupon: <b>"{{ cart.coupon.code }}"</b><br>Zniżka:<b> {{ cart.coupon.discount }}%</b>  <br>Rabat:
+				<span> <b> - {{ cart.get_discount|floatformat:"2" }} pln</b> </span></ul>
+			{% endif %} <br>
+		  
+			<ul>Razem (brutto): <b>{{ cart.total_send|floatformat:"2" }} PLN</b> <br>	
+			(w tym koszt przesyłki <b>+ 20 PLN</b>)</ul> 
+		
+	</div> 
+	<p>
+	{% endblock %}	
+

@@ -1,0 +1,135 @@
+{% extends "apka/base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block title %}
+	koszyk na zakupy
+{% endblock %}
+
+{% block content %}
+
+<style>
+#form1
+{
+	float: left;
+	width: 500px;
+	
+
+	font-size: 20px
+	padding: 50px;
+	
+	padding: 20px;
+	margin-bottom: 20px
+}
+
+
+</style>
+
+
+
+
+
+
+<br>
+<h4><b>Kosz</b></h4>
+
+  {% for item in cart %}
+				{% with product=item.product %}
+	<table  class="table">
+		
+		<thead>
+			<th scope="col">Przedmiot</th>
+			<th scope="col">Magazyn</th>
+			<th scope="col">Ilość</th>
+			<th scope="col">Usun</th>
+			<th scope="col">Cena</th>
+			<th scope="col">Kwota</th>
+
+		</thead>			
+
+   
+  <tbody>
+
+    <tr>
+      <td><a href="{{ product.get_absolute_url }}">
+								<!--<img style="height: 250px; width: 250px;" src="{% if product.image %}{{ product.image.url }}{% endif %}">-->
+								<img style="height: 250px; width: 250px;" src={{ product.image_text}}>
+							</a></td>
+	  <td>{{ product.stock  }}</td>
+      <td><form action="{% url 'cart:cart_add' product.id %}" method="post">
+							
+							{{ item.update_quantity_form.quantity }}
+							{{ item.update_quantity_form.update }}
+							<input class="btn btn-outline-dark" type="submit" value="zmien">
+							{% csrf_token %}
+							</form></td>
+							
+      <td><button type="button" class="btn btn-outline-dark"><a style="padding:10px;" href="{% url 'cart:cart_remove' product.id %}">Usun</a></button></td>
+      <td>{{item.price}} PLN </td>
+      <td>{{item.total_price}} PLN</td>
+	  
+    </tr>
+ 
+  </tbody>
+  
+</table>
+	{% endwith %}
+{% endfor %}		
+
+	
+<table class="table">
+
+	<thead>
+	<tr>
+      <th scope="col">Podsumowanie</th>
+	  <th scope="col">Kupon</th>
+      <th scope="col">Rabat [%]</th>
+      <th scope="col">Rabat [PLN]</th>
+	  <th scope="col">Koszt wysyłki</th>
+	  <th scope="col">Razem (brutto)</th>
+   </tr>
+	</thead>
+  <tbody>
+
+    <tr>
+      <td>{{ cart.get_total_price_after_discount|floatformat:"2" }}  PLN</td>
+      <td>"{{ cart.coupon.code }}"</td>
+      <td>{{ cart.coupon.discount }} %</td>
+	  <td>- {{cart.get_discount|floatformat:"2" }}</td>
+	  <td>20 PLN</td>
+	  <td>{{ cart.total_send|floatformat:"2" }} PLN </td>
+    </tr>
+
+   </tbody>
+</table>
+
+
+<br>	
+<p><b> Miejsce na twój kupon rabatowy</b></p>
+	<div id="form1" style="border: 1px solid black;">
+	
+		<form action="{% url 'coupons:apply' %}" method="post">
+		
+		{% bootstrap_form coupon_apply_form %}
+		
+		<input class="btn btn-outline-dark" type="submit" value="Wprowadź kupon">
+		
+		{% csrf_token %}
+		</form>
+
+	</div>
+	
+	
+		<button style="margin-left:170px; margin-right:10px; margin-bottom: 10px;" type="button" class="btn btn-outline-dark">
+			<a style="padding:10px;" href="{% url 'apka:product_list' %}">kontynuj zakup</a>
+			
+		
+		<button style="margin-bottom: 10px;" type="button" class="btn btn-outline-dark">
+		<a style="padding:10px;" href="{% url 'orders:order_create' %}">Do klasy</a>
+		
+
+
+
+<br>	
+
+{% endblock %}

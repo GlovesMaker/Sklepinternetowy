@@ -1,0 +1,230 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+		<meta charset="utf-8" />
+		<title> {% block title %} Polish Bike {% endblock %} </title> 
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&amp;subset=latin-ext" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	</head>
+
+<style>
+
+input[type=submit]:hover
+{
+
+color: Silver;
+}
+
+body
+{
+	font-family: 'Montserrat', sans-serif;
+	background-color: white;
+}
+
+.container
+{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 0.9
+
+		
+}
+
+
+#logo
+{
+font-size: 30px;
+text-color: white;
+
+letter-spacing: 3px;
+font-weight: 900;
+}
+
+#cart
+{
+text-align: right;
+background-color: white;
+padding: 10px;
+}
+
+#menu
+{
+
+text-color: white;
+}
+
+ol
+{
+
+border-bottom: 3px solid black;
+padding: 10px;
+
+}
+
+#lista
+{
+
+
+float:left;
+
+width: 320px;
+
+text-align: center;
+
+}
+
+
+
+/*nieodwiedzony link */
+a:link
+{
+	color: black;
+	text-decoration: none;
+} 
+
+/* odwiedzony link */
+
+a:visited
+{
+	color: black;
+	text-decoration: none;
+
+} 
+/* ponajechaniu link  */
+a:hover
+{
+	color: Silver;
+	text-decoration: none;
+}  
+
+
+	.sticky
+	{
+		width: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		z-index: 100;
+		
+	}
+		.navv_pc
+		{
+		width: 1000px;
+		background-color: white;
+		width: 100%;
+		box-shadow:0 6px 6px -6px #666;
+
+		}
+				#stopka_pc
+		{
+			box-shadow:0 0 6px black;
+			
+			clear: both;
+			font-size: 12px;
+			
+			
+			text-align: center;
+		
+			
+		}	
+		
+
+
+
+
+</style>	
+	
+		<center style=" background-color: 	silver; ;"><a style="color: white;" href="{% url 'apka:zwrot' %}">ZAMAWIAJ BEZ OBAW!     -     MASZ 14 DNI NA ZWROT     -      DOWIEDZ SIĘ WIĘCEJ</a></center>
+		<div class="navv_pc">
+				<div class="container">
+				
+				<div id="logo"><a href="/">Polish Bike</a>
+				<div style="text-align:right; font-size:12px;">
+				Kontakt: <a href="callto:+48 517 130 959" style="color: black"> +48 517 130 959</a><br>
+				<!--Lokalizacja: <a href="https://www.google.pl/maps/@51.1076212,17.0325615,14.25z" target="blank" style="color: black"> Wrocław </a>-->
+				</div>
+					
+					
+				</div>
+					
+					<div id="cart">
+					
+					{% with total_items=cart|length %}
+						{% if cart|length > 0 %} 
+						kosz:
+						<a href="{% url 'cart:cart_detail' %}">
+						<img src="https://s3.amazonaws.com/polishbike/cart.png">
+						{{ total_items }} produkt{{total_items|pluralize:"y"}},
+						{{cart.total_send|floatformat:"2" }} PLN
+						</a>
+						{% else %}
+						
+						 koszyk jest pusty<a href="{% url 'cart:cart_detail' %}"> <img src="https://s3.amazonaws.com/polishbike/cart.png"></a>
+						{%endif%}
+						{% endwith %}
+					</div>
+				</div>
+		</div>
+		
+		
+		<div class="container">
+			{% block content %}
+	
+	
+			{% endblock %}
+		</div>					
+
+					<div id="stopka_pc">
+					<br>
+							
+			
+								<p style="color: black;">&copy; 2018 
+									<a style="color: black;" href="/">Polish Bike</a> 
+									| Wszystkie prawa zastrzeżone. |
+									<a style="color: black;" href="mailto:buchar123@gmail.com">  </a> 
+									| 
+									 Lokalizacja: <a href="https://www.google.pl/maps/@51.1076212,17.0325615,14.25z" target="blank" style="color: black"> Wrocław </a> <br>
+									 Telefon: <a href="callto:+48 517 130 959" style="color: black"> +48 517 130 959 </a>									 |
+									<a style="color: black;" href="/admin/">Admin</a> | <a style="color: black;" href="{% url 'apka:regulamin' %}">Regulamin</a>
+								</p> 
+								
+	<a href="/"><img style="height: 200px; width: 200px; padding: 20px;" src="https://s3.amazonaws.com/polishbike/PolishBike.jpg"></a>
+	</center>			
+			
+							
+					</div>
+
+			
+	
+<script src="https://s3.eu-west-2.amazonaws.com/inwestor/jquery-3.3.1.min.js"></script>			
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+
+			$(document).ready(function() {
+			var NavY = $('.navv_pc').offset().top;
+			 
+			var stickyNav = function(){
+			var ScrollY = $(window).scrollTop();
+				  
+			if (ScrollY > NavY) { 
+				$('.navv_pc').addClass('sticky');
+			} else {
+				$('.navv_pc').removeClass('sticky'); 
+			}
+			};
+			 
+			stickyNav();
+			 
+			$(window).scroll(function() {
+				stickyNav();
+			});
+			});
+</script>
+</body>
+</html>

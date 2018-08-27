@@ -1,0 +1,49 @@
+{% extends "apka/base.html" %}
+
+
+
+{% load static %}
+
+
+{% block title %}
+	{% if category %}{{ category.name }}{% else %}Produkty{% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+			<ol {% if not category %}{% endif %}>
+				<a href="{% url 'apka:product_list' %}"> Wszystkie dostępne produkty </a>
+			</ol>
+			{% for c in categories %}
+				<ol {% if category.slug == c.slug %}{% endif %}>
+					<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+				</ol>
+			{% endfor %} 
+	
+<br>
+
+		<h4><b>{% if category %}{{ category.name }}{% else %}Wszystkie dostępne produkty{% endif %}<b></h4>
+
+
+
+	{% for product in products %}
+
+		<div id="lista">
+			<a href="{{ product.get_absolute_url }}">
+				<!--<img style="height: 250px; width: 250px;" src="{% if product.image %}{{product.image.url}}{% endif %}">-->
+				<img style="height: 200px; width: 200px;" src={{ product.image_text}}>
+			</a><br>
+		
+			<a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br><br>
+			Cena: {{ product.price }} PLN <br><br><br><br>
+		</div>
+
+{% endfor %}
+	
+		
+{% endblock %}
+

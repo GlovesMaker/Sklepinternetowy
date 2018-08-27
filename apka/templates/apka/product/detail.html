@@ -1,0 +1,42 @@
+{% extends "apka/base.html" %}
+<style>
+
+</style>
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}
+	{% if category %}{{ category.title }}{% else %}Produkty{% endif %}
+	
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+<br>
+<h4><b>Dział sprzedaży: <a href="{{ product.category.get_absolute_url }}">{{product.category}}</a></b></h4>
+				
+			
+	<h5>{{ product.name }}</h5>
+		<!--<img style="height: 250px; width: 250px;" src={% if product.image %}{{ product.image.url }}{% endif %}>-->
+		
+  
+	<img style="height: 250px; width: 250px;" src={{ product.image_text}}><br><br>
+	<p> Cena: <b>{{product.price }} PLN </b></p>
+	<p> Dostępna ilość: <b>{{ product.stock }}</b>  </p>
+	
+		<form style="width: 250px;"  action="{% url 'cart:cart_add' product.id %}" method='POST'>
+
+	{% bootstrap_form cart_product_form %}
+	{% csrf_token %}
+	<input class="btn btn-outline-dark" type="submit" value="Dodaj do kosza"></input>
+	
+		</form>
+		
+<br>
+	<h4></b>Opis</b></h4>
+	 <p style="text-align:justify;"> {{ product.description|linebreaks}} </p>
+
+</div><br>
+{% endblock %}
