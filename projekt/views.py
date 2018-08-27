@@ -7,7 +7,7 @@ from orders.models import OrderItem
 from orders.models import Order
 from cart.cart import Cart
 
-r =[77,78,79,80]
+#r =[77,78,79,80]
 
 
 class GeneratePdf(View):
@@ -15,7 +15,7 @@ class GeneratePdf(View):
         cart = Cart(request)
         template = get_template('invoice.html')
         p = Order.objects.all()
-        asd = OrderItem.objects.get(id=r[2])
+        #asd = OrderItem.objects.get(id=r[2])
         
 
         for x in p:
