@@ -23,10 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nf)nxbl8%516@*x-hgbs^sz7)3^rjf!1@#ja-011$c!0gb2_=j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['bikepolish.herokuapp.com']
-#'www.ohoapp.club'
+ALLOWED_HOSTS = ['www.dbuchar.pl']
+#'www.dbuchar.pl'
+#'bikepolish.herokuapp.com'
 
 CART_SESSION_ID = 'cart'
 
