@@ -18,6 +18,7 @@ class Cart(object):
 
         product_id = str(product.id)
         if product.stock >= quantity:
+    
             if not product_id in self.cart:
                 self.cart[product_id] = self.cart.get(product_id, {'quantity': quantity, 'price': str(product.price)})
 
