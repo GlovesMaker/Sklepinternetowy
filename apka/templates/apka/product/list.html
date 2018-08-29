@@ -14,7 +14,7 @@
 
 
 			<ol {% if not category %}{% endif %}>
-				<a href="{% url 'apka:product_list' %}"> Wszystkie dostępne produkty </a>
+				<a href="{% url 'apka:product_list' %}"> Wszystkie produkty </a>
 			</ol>
 			{% for c in categories %}
 				<ol {% if category.slug == c.slug %}{% endif %}>
