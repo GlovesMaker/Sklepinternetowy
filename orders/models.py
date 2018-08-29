@@ -34,6 +34,8 @@ class Order(models.Model):
     Kurier_InPost = models.BooleanField(default=False, verbose_name='Kurier InPost  - pobranie')
     Paczkomaty_InPost = models.BooleanField(default=False, verbose_name='Paczkomaty InPost - pobranie (podaj nazwa paczkomatu)')
     Poczta_Polska = models.BooleanField(default=False, verbose_name='Poczta Polska - pobranie')
+    #Paypal_Kurier = models.BooleanField(default=False, verbose_name='PayPal kuerier - płatność z góry')
+    #Paypal_InPost = models.BooleanField(default=False, verbose_name='PayPal Paczkomaty InPost - płatność z góry')
     
     class Meta:
         ordering = ('-created',)

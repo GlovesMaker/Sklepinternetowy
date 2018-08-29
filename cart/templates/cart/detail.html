@@ -40,9 +40,10 @@
 		<thead>
 			<th scope="col">Przedmiot</th>
 			<th scope="col">Magazyn</th>
+			<th scope="col">Nazwa</th>
 			<th scope="col">Ilość</th>
 			<th scope="col">Usun</th>
-			<th scope="col">Cena</th>
+			<!--<th scope="col">Cena</th>-->
 			<th scope="col">Kwota</th>
 
 		</thead>			
@@ -56,6 +57,7 @@
 								<img style="height: 250px; width: 250px;" src={{ product.image_text}}>
 							</a></td>
 	  <td>{{ product.stock  }}</td>
+	  <td> {{product.name }} </td>
       <td><form action="{% url 'cart:cart_add' product.id %}" method="post">
 							
 							{{ item.update_quantity_form.quantity }}
@@ -65,7 +67,7 @@
 							</form></td>
 							
       <td><button type="button" class="btn btn-outline-dark"><a style="padding:10px;" href="{% url 'cart:cart_remove' product.id %}">Usun</a></button></td>
-      <td>{{item.price}} PLN </td>
+      <!--<td>{{item.price}} PLN </td>-->
       <td>{{item.total_price}} PLN</td>
 	  
     </tr>
