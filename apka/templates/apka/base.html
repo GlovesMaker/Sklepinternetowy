@@ -81,17 +81,7 @@ padding: 10px;
 
 }
 
-#lista
-{
 
-
-float:left;
-
-width: 320px;
-
-text-align: center;
-
-}
 
 
 
@@ -149,9 +139,54 @@ a:hover
 			
 		}	
 		
+		
+#lista
+{
 
 
+float:left;
 
+width: 320px;
+
+text-align: center;
+
+}		
+		
+.overlay
+{
+
+position: relative;
+width: 320px;
+
+}
+
+.overlay .link
+{
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	
+	left: 0;
+	top: 0;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	border: 1px solid black;	
+	
+}
+
+.overlay:hover .link
+{
+opacity: 0.9;
+}
+
+.icon
+{
+display: block;
+top: 85%;
+position: relative;
+font-size: 20px;
+}
 
 </style>	
 	
@@ -206,7 +241,7 @@ a:hover
 									
 									 Lokalizacja: <a href="https://www.google.pl/maps/@51.1076212,17.0325615,14.25z" target="blank" style="color: black"> Wrocław </a> <br>
 									 Telefon: <a href="callto:+48 517 130 959" style="color: black"> +48 517 130 959 </a>									 |
-									<a style="color: black;" href="/admin/">Admin</a> | <a style="color: black;" href="{% url 'apka:regulamin' %}">Regulamin</a> |
+									<a style="color: black;" href="/admin/">Admin</a> | <!--<a style="color: black;" >Regulamin</a> |-->
 									<a style="color: black;" href="{% url 'apka:zwrot' %}">Zwrot</a>
 								</p> 
 								
