@@ -12,6 +12,8 @@ def error_500(request):
         data = {}
         return render(request,'apka/error_500.html', data)
 
+def koszt(request):
+    return render(request, 'apka/koszt.html')
 
 def zwrot(request):
     return render(request, 'apka/zwrot.html')
