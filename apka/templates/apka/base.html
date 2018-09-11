@@ -73,13 +73,6 @@ padding: 10px;
 text-color: white;
 }
 
-ol
-{
-
-border-bottom: 3px solid black;
-padding: 10px;
-
-}
 
 
 
@@ -115,7 +108,7 @@ a:hover
 		left: 0;
 		top: 0;
 		right: 0;
-		z-index: 100;
+		z-index: 10;
 		
 	}
 		.navv_pc
@@ -188,6 +181,109 @@ position: relative;
 font-size: 20px;
 }
 
+ol
+{
+
+
+padding: 10px;
+list-style-type: none;
+z-index: 200;
+
+border-bottom: 2px solid black;
+}
+
+
+
+.site-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100px;
+  width: 100%;
+  
+  
+}
+
+.side-menu-trigger {
+  
+  color: black;
+  background: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding: 10px;
+  margin-right: 90%;
+  font-size: 30px;
+  
+}
+
+.side-menu-trigger:hover
+{
+
+  background: #494e53;
+  color: Silver;
+
+}
+
+
+.side-menu {
+  display: flex;
+  box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  width: 300px;
+  top: 139px;
+  right: -300px;
+  padding: 0;
+ 
+  transition: 0.3s transform ease-in-out;
+  
+
+}
+
+.side-menu ul {
+  position: absolute;
+  display: flex;
+  height: calc(100% - 20px);
+  flex-wrap: wrap;
+  margin: 0 10px;
+  padding: 0;
+  list-style-type: none;
+  align-content: flex-start
+}
+
+.side-menu ul li {
+  
+ 
+  background: #ffffff;
+  flex-basis: 100%;
+  margin-top: 20px;
+  color: #696e9e;
+  text-align: center;
+  overflow: hidden;
+  
+}
+
+.side-menu ul li a {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.side-menu-trigger:focus ~ .side-menu, .side-menu:hover {
+  transform: translateX(-210px); 
+}
+
+
+
 </style>	
 	
 		<center style=" background-color: 	silver; ;"><a style="color: white;" href="{% url 'apka:zwrot' %}">ZAMAWIAJ BEZ OBAW!     -     MASZ 14 DNI NA ZWROT     -      DOWIEDZ SIĘ WIĘCEJ</a></center>
@@ -195,6 +291,7 @@ font-size: 20px;
 				<div class="container">
 				
 				<div id="logo"><a href="/">Polish Bike</a>
+				
 				<div style="text-align:right; font-size:12px;">
 				Kontakt: <a href="callto:+48 517 130 959" style="color: black"> +48 517 130 959</a><br>
 				<!--Lokalizacja: <a href="https://www.google.pl/maps/@51.1076212,17.0325615,14.25z" target="blank" style="color: black"> Wrocław </a>-->

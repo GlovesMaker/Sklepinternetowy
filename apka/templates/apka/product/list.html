@@ -10,17 +10,32 @@
 {% block content %}
 
 
-
-
-
+<nav class="site-nav">
+    <button class="side-menu-trigger">Menu</button>
+    <aside class="side-menu">
+      <ul>
+        <li>
 			<ol {% if not category %}{% endif %}>
 				<a href="{% url 'apka:product_list' %}"> Wszystkie produkty </a>
 			</ol>
 			{% for c in categories %}
 				<ol {% if category.slug == c.slug %}{% endif %}>
-					<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+					<a href="{{ c.get_absolute_url }}">{{ c.name }}</a><br>
 				</ol>
 			{% endfor %} 
+        </li>
+        <li style="border-bottom: 2px solid black;">
+          <a href="{% url 'apka:koszt' %}">
+            <span style="margin-left:10px;" > Koszt wysyłki </span>
+          </a>
+        </li>
+  
+      </ul>
+  </aside>
+  </nav>
+
+
+
 	
 <br>
 
