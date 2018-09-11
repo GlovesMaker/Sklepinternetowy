@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<div id="laptop">
+
 <nav class="site-nav">
     <button class="side-menu-trigger">Menu</button>
     <aside class="side-menu">
@@ -34,7 +34,7 @@
   </aside>
   </nav>
 
-</div>
+
 
 	
 <br>
@@ -59,7 +59,30 @@
 				Cena: {{ product.price }} PLN <br><br><br><br>
 			
 		</div>
+		<script src="https://s3.eu-west-2.amazonaws.com/inwestor/jquery-3.3.1.min.js"></script>			
+<script src="jquery-1.11.3.min.js"></script>
+<script>
 
+			$(document).ready(function() {
+			var NavY = $('.site-nav').offset().top;
+			 
+			var stickyNav = function(){
+			var ScrollY = $(window).scrollTop();
+				  
+			if (ScrollY > NavY) { 
+				$('.site-nav').addClass('sticky');
+			} else {
+				$('.site-nav').removeClass('sticky'); 
+			}
+			};
+			 
+			stickyNav();
+			 
+			$(window).scroll(function() {
+				stickyNav();
+			});
+			});
+</script>
 {% endfor %}
 	
 		
