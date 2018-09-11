@@ -9,9 +9,9 @@
 
 {% block content %}
 
-<div id="prawe_menu">
+<div id="laptop">
 <nav class="site-nav">
-    <button class="side-menu-trigger" style="z-index: 200;">Menu</button>
+    <button class="side-menu-trigger">Menu</button>
     <aside class="side-menu">
       <ul>
         <li>
@@ -33,18 +33,10 @@
       </ul>
   </aside>
   </nav>
+
 </div>
 
-	<div id="lewe_menu">
-			<ol {% if not category %}{% endif %}>
-				<a href="{% url 'apka:product_list' %}"> Wszystkie produkty </a>
-			</ol>
-			{% for c in categories %}
-				<ol {% if category.slug == c.slug %}{% endif %}>
-					<a href="{{ c.get_absolute_url }}">{{ c.name }}</a><br>
-				</ol>
-			{% endfor %} 
-	</div>
+	
 <br>
 
 		<h4><b>{% if category %}{{ category.name }}{% else %}Wszystkie dostępne produkty{% endif %}<b></h4>
@@ -67,33 +59,7 @@
 				Cena: {{ product.price }} PLN <br><br><br><br>
 			
 		</div>
-		
-<script src="https://s3.eu-west-2.amazonaws.com/inwestor/jquery-3.3.1.min.js"></script>			
-<script src="jquery-1.11.3.min.js"></script>
-<script>
 
-			$(document).ready(function() {
-			var NavY = $('.site-nav').offset().top;
-			 
-			var stickyNav = function(){
-			var ScrollY = $(window).scrollTop();
-				  
-			if (ScrollY > NavY) { 
-				$('.site-nav').addClass('sticky');
-			} else {
-				$('.site-nav').removeClass('sticky'); 
-			}
-			};
-			 
-			stickyNav();
-			 
-			$(window).scroll(function() {
-				stickyNav();
-			});
-			});
-</script>		
-		
-</body>
 {% endfor %}
 	
 		
