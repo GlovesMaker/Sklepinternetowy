@@ -26,7 +26,7 @@ SECRET_KEY = 'nf)nxbl8%516@*x-hgbs^sz7)3^rjf!1@#ja-011$c!0gb2_=j'
 #DEBUG = False
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['bikepolish.herokuapp.com']
 #'www.dbuchar.pl'
 #'bikepolish.herokuapp.com'
 
