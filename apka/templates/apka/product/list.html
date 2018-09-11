@@ -9,7 +9,7 @@
 
 {% block content %}
 
-
+<div id="prawe_menu">
 <nav class="site-nav">
     <button class="side-menu-trigger" style="z-index: 200;">Menu</button>
     <aside class="side-menu">
@@ -33,10 +33,18 @@
       </ul>
   </aside>
   </nav>
+</div>
 
-
-
-	
+	<div id="lewe_menu">
+			<ol {% if not category %}{% endif %}>
+				<a href="{% url 'apka:product_list' %}"> Wszystkie produkty </a>
+			</ol>
+			{% for c in categories %}
+				<ol {% if category.slug == c.slug %}{% endif %}>
+					<a href="{{ c.get_absolute_url }}">{{ c.name }}</a><br>
+				</ol>
+			{% endfor %} 
+	</div>
 <br>
 
 		<h4><b>{% if category %}{{ category.name }}{% else %}Wszystkie dostępne produkty{% endif %}<b></h4>
